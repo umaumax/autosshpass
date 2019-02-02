@@ -1,8 +1,10 @@
-# sshpass_wrapper
+# auto{ssh,scp,rsync}pass
 
-I have not confirmed this command yet...
-
-* set this command on `$PATH`
+## how to use
+* just replace
+  * `ssh` to `autosshpass`
+  * `scp` to `autoscppass`
+  * `rsync` to `autorsyncpass`
 
 ## settings for auto password input
 ### way.1 SSHPASS environment variable
