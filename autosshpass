@@ -11,10 +11,13 @@
 
 function main() {
 	local cmd_name=$(basename $0)
-	local cmd
-	[[ $cmd_name =~ ssh ]] && local cmd='ssh'
-	[[ $cmd_name =~ scp ]] && local cmd='scp'
-	[[ $cmd_name =~ rsync ]] && local cmd='rsync'
+	# NOTE: guess real cmd name
+	local cmd=${AUTOSSHPASS_CMD:-$(printf '%s' "$cmd_name" | grep -o 'auto.*pass' | sed -E 's/^auto(.*)pass$/\1/g')}
+	if [[ -z $cmd_name ]]; then
+		[[ $cmd_name =~ ssh ]] && cmd='ssh'
+		[[ $cmd_name =~ scp ]] && cmd='scp'
+		[[ $cmd_name =~ rsync ]] && cmd='rsync'
+	fi
 	if ! type >/dev/null 2>&1 sshpass; then
 		$cmd "$@"
 		return

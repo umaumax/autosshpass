@@ -5,6 +5,7 @@
   * `ssh` to `autosshpass`
   * `scp` to `autoscppass`
   * `rsync` to `autorsyncpass`
+  * `xxx` to `autoxxxpass` or `export AUTOSSHPASS_CMD='xxx'`
 
 ## settings for auto password input
 ### way.1 SSHPASS environment variable
