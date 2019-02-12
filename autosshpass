@@ -26,8 +26,8 @@ function main() {
 
 	local host
 	for arg in "$@"; do
-		[[ $arg =~ -.* ]] && continue
 		if [[ $cmd == "ssh" ]]; then
+		[[ $arg =~ ^-.* ]] && continue
 			local host=$arg
 			break
 		fi
